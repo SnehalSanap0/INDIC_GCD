@@ -1,0 +1,48 @@
+[
+  {
+      "text": "नमस्कार! हमारा पहला पाठ है अभिवादन और परिचय। तो चलिए शुरू करते हैं।",
+      "english": "Namaskar! Our first lesson is greetings and introductions. So, let’s begin.",
+      "animation": "bow"
+  },
+  {
+      "text": "नमस्ते! यह एक सामान्य अभिवादन है, जिसका प्रयोग हम मिलते समय करते हैं।",
+      "expected": "नमस्ते",
+      "english": "Namaste! This is a common greeting used when meeting someone."
+  },
+  {
+      "text": "मेरा नाम अमित है। यह वाक्य आत्म-परिचय के लिए उपयोगी है।",
+      "expected": "मेरा नाम अमित है",
+      "english": "My name is Amit. This sentence is useful for self-introduction."
+  },
+  {
+      "text": "नमस्ते! आप कैसे हैं?",
+      "expected": "आप कैसे हैं?",
+      "english": "Hello! How are you?"
+  },
+  {
+      "text": "वाक्य पूरा करें: 'नमस्ते! मेरा नाम ___ है' (राज, सिमा, अमित)",
+      "expected": "राज",
+      "english": "Complete the sentence: 'Hello! My name is ___'. (Raj, Sima, Amit)"
+  },
+  {
+      "text": "सही उत्तर: 'नमस्ते! मेरा नाम राज है'.",
+      "expected": "नमस्ते! मेरा नाम राज है",
+      "english": "Correct answer: 'Hello! My name is Raj'."
+  },
+  {
+      "text": "नमस्ते! आप कहाँ से हैं?",
+      "expected": "आप कहाँ से हैं?",
+      "english": "Hello! Where are you from?"
+  },
+  {
+      "text": "सही उत्तर: 'नमस्ते! आप कहाँ से हैं?'",
+      "expected": "नमस्ते! आप कहाँ से हैं?",
+      "english": "Correct answer: 'Hello! Where are you from?'"
+  },
+  {
+      "text": "धन्यवाद! अब आप हिंदी में अभिवादन और परिचय देने के लिए सामान्य वाक्य बना सकते हैं।",
+      "expected": "धन्यवाद",
+      "english": "Thank you! Now you can form basic greetings and introduction sentences in Hindi.",
+      "animation": "clap"
+  }
+]

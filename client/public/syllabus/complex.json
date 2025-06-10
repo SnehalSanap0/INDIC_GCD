@@ -1,0 +1,45 @@
+[
+  {
+      "text": "नमस्कार! हमारा पहला पाठ है जटिल वाक्य। तो चलिए शुरू करते हैं।",
+      "english": "Namaskar! Our first lesson is complex sentences. So, let’s begin.",
+      "animation": "bow"
+  },
+  {
+      "text": "संयोजन 'और' (and): जब हम दो वाक्यों को जोड़ना चाहते हैं जो समान अर्थ या क्रियाओं वाले होते हैं, तो हम 'और' का उपयोग करते हैं।",
+      "english": "Conjunction 'aur' (and): When we want to join two sentences that have similar meanings or actions, we use 'aur'."
+  },
+  {
+      "text": "उदाहरण: मैं स्कूल जा रहा हूँ और वह खेल रहा है।",
+      "expected": "मैं स्कूल जा रहा हूँ और वह खेल रहा है।",
+      "english": "Example: I am going to school, and he is playing."
+  },
+  {
+      "text": "वाक्य जोड़ें: 'मैं सो रहा हूँ।', 'तुम पढ़ रहे हो।' ('और' का उपयोग करें।)",
+      "expected": "मैं सो रहा हूँ और तुम पढ़ रहे हो।",
+      "english": "Combine the sentences: 'I am sleeping.' 'You are studying.' (Use 'and')."
+  },
+  {
+      "text": "वाक्य जोड़ें: 'माँ खाना बना रही हैं।', 'पिताजी अखबार पढ़ रहे हैं।' ('और' का उपयोग करें।)",
+      "expected": "माँ खाना बना रही हैं और पिताजी अखबार पढ़ रहे हैं।",
+      "english": "Combine the sentences: 'Mother is cooking.' 'Father is reading the newspaper.' (Use 'and')."
+  },
+  {
+      "text": "संयोजन 'लेकिन' (but): जब दो क्रियाओं या स्थितियों के बीच विरोधाभास होता है, तो हम 'लेकिन' का उपयोग करते हैं।",
+      "english": "Conjunction 'lekin' (but): When there is a contradiction between two actions or situations, we use 'lekin'."
+  },
+  {
+      "text": "उदाहरण: मैं स्कूल जा रहा हूँ लेकिन वह घर पर है।",
+      "expected": "मैं स्कूल जा रहा हूँ लेकिन वह घर पर है।",
+      "english": "Example: I am going to school, but he is at home."
+  },
+  {
+      "text": "वाक्य जोड़ें: 'सूरज चमक रहा है।', 'आसमान में बादल हैं।' ('लेकिन' का उपयोग करें।)",
+      "expected": "सूरज चमक रहा है लेकिन आसमान में बादल हैं।",
+      "english": "Combine the sentences: 'The sun is shining.' 'There are clouds in the sky.' (Use 'but')."
+  },
+  {
+      "text": "वाक्य जोड़ें: 'तुम खेलने जा रहे हो।', 'मुझे पढ़ाई करनी है।' ('लेकिन' का उपयोग करें।)",
+      "expected": "तुम खेलने जा रहे हो लेकिन मुझे पढ़ाई करनी है।",
+      "english": "Combine the sentences: 'You are going to play.' 'I need to study.' (Use 'but')."
+  }
+]

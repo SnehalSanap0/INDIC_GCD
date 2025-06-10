@@ -1,0 +1,42 @@
+[
+  { 
+    "text": "व्यंजन पाँच समूहों में बंटे होते हैं: कंठ्य, तालव्य, मूर्धन्य, दंत्य, और ओष्ठ्य। चलिए इन्हें समझते हैं!", 
+    "english": "Consonants are divided into five groups: Guttural, Palatal, Retroflex, Dental, and Labial. Let’s understand them!", 
+    "animation": "explain"
+  },
+  { 
+    "text": "कंठ्य (गले से उच्चरित) – क, ख, ग, घ, ङ। जैसे, ‘ग’ से गिलहरी।", 
+    "expected": "गिलहरी",
+    "english": "Guttural sounds: क, ख, ग, घ, ङ. For example, 'ग' for Squirrel."
+  },
+  { 
+    "text": "तालव्य (तालु से उच्चरित) – च, छ, ज, झ, ञ। जैसे, ‘च’ से चंदा।", 
+    "expected": "चंदा",
+    "english": "Palatal sounds: च, छ, ज, झ, ञ. For example, 'च' for Moon."
+  },
+  { 
+    "text": "मूर्धन्य (जीभ के पिछले हिस्से से उच्चरित) – ट, ठ, ड, ढ, ण। जैसे, ‘ट’ से टोपी।", 
+    "expected": "टोपी",
+    "english": "Retroflex sounds: ट, ठ, ड, ढ, ण. For example, 'ट' for Cap."
+  },
+  { 
+    "text": "दंत्य (दाँतों से उच्चरित) – त, थ, द, ध, न। जैसे, ‘द’ से दरवाज़ा।", 
+    "expected": "दरवाज़ा",
+    "english": "Dental sounds: त, थ, द, ध, न. For example, 'द' for Door."
+  },
+  { 
+    "text": "ओष्ठ्य (होठों से उच्चरित) – प, फ, ब, भ, म। जैसे, ‘प’ से पतंग।", 
+    "expected": "पतंग",
+    "english": "Labial sounds: प, फ, ब, भ, म. For example, 'प' for Kite."
+  },
+  { 
+    "text": "अंत में हैं अयोगवाह: य, र, ल, व, श, ष, स, ह। जैसे, ‘ल’ से लड्डू।", 
+    "expected": "लड्डू",
+    "english": "Lastly, semi-vowels and sibilants: य, र, ल, व, श, ष, स, ह. For example, 'ल' for Laddu (sweet)."
+  },
+  { 
+    "text": "शेष व्यंजन हैं क्ष, त्र, ज्ञ। जैसे, ‘ज्ञ’ से ज्ञान।", 
+    "expected": "ज्ञान",
+    "english": "Remaining consonants: क्ष, त्र, ज्ञ. For example, 'ज्ञ' for Knowledge."
+  }
+]

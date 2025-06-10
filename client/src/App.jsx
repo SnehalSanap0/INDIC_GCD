@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import Landing from './Landing'
+import SignUp from './SignUp'
+import LoginPage from './LoginPage'
+import HomePage from './HomePage'
+import { SpeechProvider } from './Avatar'
+import LessonPage from './LessonPage';
 import './App.css'
+import { AuthProvider } from './utils/AuthContext'
+import NavigationBar from './components/NavigationBar'
+import PrivateRoute from './PrivateRoute'
+import { ToastProviderComponent } from './components/ui/use-toast'
+import GoogleTranslate from './components/GoogleTranslate';
+import CollapsibleReadAloudButton from './components/ReadAloudButton'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AuthProvider>
+      <ToastProviderComponent>
+        <Router>
+          <SpeechProvider>
+          <div className='App'>
+            <NavigationBar />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<LoginPage />} />
+
+              {/* protected routes (requires logged in) */}
+              <Route path="/home" element={<PrivateRoute><HomePage /> </PrivateRoute>} />
+              <Route path="/lesson/:levelId" element={<PrivateRoute> <LessonPage /></PrivateRoute>} />
+
+            </Routes>
+            <GoogleTranslate/>
+            <CollapsibleReadAloudButton/>
+          </div>
+          </SpeechProvider>
+        </Router>
+      </ToastProviderComponent>
+    </AuthProvider>
   )
 }
 
 export default App
+
+
+
