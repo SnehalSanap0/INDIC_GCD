@@ -46,6 +46,9 @@ import HabitGame4 from './components/Learnings/Animation4'
 import HabitGame5 from './components/Learnings/Animation5'
 import HabitGame6 from './components/Learnings/Animation6'
 
+//AI Components
+import FloatingChat from './components/AI/FloatingChat'
+
 // Styles
 import './App.css'
 
@@ -112,6 +115,9 @@ function App() {
 
               {/* Google Translate widget */}
               <GoogleTranslate />
+              
+              {/*AI Chat Button */}
+              <FloatingChat/>
 
               {/* Read aloud accessibility feature */}
               <CollapsibleReadAloudButton />
