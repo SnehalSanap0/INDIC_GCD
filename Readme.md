@@ -1,4 +1,4 @@
-# 🇮🇳 INDIC – Inclusive Digital Indian Classroom
+# INDIC – Inclusive Digital Indian Classroom
 
 > INDIC is a culturally-rooted, AI-driven educational platform designed to make Indian language learning inclusive, engaging, and accessible through gamification, AR, and emotional AI avatars.
 
