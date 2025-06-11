@@ -49,6 +49,18 @@ import HabitGame6 from './components/Learnings/Animation6'
 //AI Components
 import FloatingChat from './components/AI/FloatingChat'
 
+//AR Components
+import ARDetection from './components/AR/ARDetection'
+
+//ISL Components
+import FloatingActionButton from './FloatingActionButton'
+import RoadmapForm from './components/Roadmap/RoadmapForm'
+import SignLanguageDashboard from './components/ISL/SignLanguageDashboard'
+import HandTracking from './components/ISL/HandTracking'
+import HearingImpairmentAssistant from './components/ISL/spelling/spelling'
+import PDFSyllabusGenerator from './components/Pdf/Pdf'
+
+
 // Styles
 import './App.css'
 
@@ -111,11 +123,24 @@ function App() {
               <Route path="/habit5" element={<PrivateRoute><HabitGame5 /> </PrivateRoute>} />
               <Route path="/habit6" element={<PrivateRoute><HabitGame6 /> </PrivateRoute>} />
 
+              {/* AR */}
+              <Route path="/ar" element={<PrivateRoute><ARDetection /> </PrivateRoute>} />
+
+              {/*Extras*/}
+              <Route path="/roadmap" element={<PrivateRoute><RoadmapForm /> </PrivateRoute>} />
+              <Route path="/signdashboard" element={<PrivateRoute><SignLanguageDashboard /> </PrivateRoute>} />
+              <Route path="/handtracking" element={<PrivateRoute><HandTracking /> </PrivateRoute>} />
+              <Route path="/spelling" element={<PrivateRoute><HearingImpairmentAssistant /> </PrivateRoute>} />
+              <Route path="/pdf" element={<PrivateRoute><PDFSyllabusGenerator/> </PrivateRoute>} />
+
               </Routes>
 
               {/* Google Translate widget */}
               <GoogleTranslate />
-              
+
+              {/*ISL Button */}
+              <FloatingActionButton/>
+
               {/*AI Chat Button */}
               <FloatingChat/>
 
