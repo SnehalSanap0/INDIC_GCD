@@ -20,15 +20,22 @@ import GoogleTranslate from './components/GoogleTranslate'
 import CollapsibleReadAloudButton from './components/ReadAloudButton'
 
 // Games Components
-import DrawingCanvas from './components/Games/Canvas'
-import FlippedCard from './components/Games/FlippedCard'
-import GamesDashboard from './components/Games/GamesDashboard'
-import FillInTheBlanks from './components/Games/FillInTheBlanks'
-import Frog from './components/Games/Frog'
-import Game from './components/Games/Match'
-import GuessTheEmoji from './components/Games/Noun'
-import RangoliGame from './components/Games/Rangoli'
-import Sentence from './components/Games/Sentence'
+import GamesDashboard from './components/games/GamesDashboard'
+import DrawingCanvas from './components/games/Canvas'
+import FlippedCard from './components/games/FlippedCard'
+import FillInTheBlanks from './components/games/FillInTheBlanks'
+import Frog from './components/games/Frog'
+import Game from './components/games/Match'
+import GuessTheEmoji from './components/games/Noun'
+import RangoliGame from './components/games/Rangoli'
+import Sentence from './components/games/Sentence'
+
+// Stories Components
+import GolcondaFortStory from './components/stories/GolcondaFort'
+import CharminarStory from './components/stories/Charminar'
+import MahaKumbh from './components/stories/MahaKumbh'
+import Cleanliness from './components/stories/Cleanliness'
+import StoryDashboard from './components/stories/StoryDashboard'
 
 // Styles
 import './App.css'
@@ -75,6 +82,13 @@ function App() {
                 <Route path="/sentence" element={<PrivateRoute><Sentence /> </PrivateRoute>} />
                 <Route path="/noun" element={<PrivateRoute><GuessTheEmoji /> </PrivateRoute>} />
                 <Route path="/rangoli" element={<PrivateRoute><RangoliGame /> </PrivateRoute>} />
+
+                {/* Stories routes */}
+                <Route path="/stories" element={<PrivateRoute><StoryDashboard /> </PrivateRoute>} />
+                <Route path="/golconda" element={<PrivateRoute><GolcondaFortStory /></PrivateRoute>} />
+                <Route path="/cleanliness" element={<PrivateRoute><Cleanliness /></PrivateRoute>} />
+                <Route path="/mahakumbh" element={<PrivateRoute><MahaKumbh /></PrivateRoute>} />
+                <Route path="/charminar" element={<PrivateRoute><CharminarStory /></PrivateRoute>} />
 
               </Routes>
 
