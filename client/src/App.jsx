@@ -37,6 +37,18 @@ import MahaKumbh from './components/stories/MahaKumbh'
 import Cleanliness from './components/stories/Cleanliness'
 import StoryDashboard from './components/stories/StoryDashboard'
 
+//Learnings Components
+import LearningDashboard from './components/Learnings/LearningDashboard'
+import HabitGame1 from './components/Learnings/Animation1'
+import HabitGame2 from './components/Learnings/Animation2'
+import HabitGame3 from './components/Learnings/Animation3'
+import HabitGame4 from './components/Learnings/Animation4'
+import HabitGame5 from './components/Learnings/Animation5'
+import HabitGame6 from './components/Learnings/Animation6'
+
+//AI Components
+import FloatingChat from './components/AI/FloatingChat'
+
 // Styles
 import './App.css'
 
@@ -90,10 +102,22 @@ function App() {
                 <Route path="/mahakumbh" element={<PrivateRoute><MahaKumbh /></PrivateRoute>} />
                 <Route path="/charminar" element={<PrivateRoute><CharminarStory /></PrivateRoute>} />
 
+                {/* Learnings routes */}
+              <Route path="/learnings" element={<PrivateRoute><LearningDashboard /> </PrivateRoute>} />
+              <Route path="/habit1" element={<PrivateRoute><HabitGame1 /> </PrivateRoute>} />
+              <Route path="/habit2" element={<PrivateRoute><HabitGame2 /> </PrivateRoute>} />
+              <Route path="/habit3" element={<PrivateRoute><HabitGame3 /> </PrivateRoute>} />
+              <Route path="/habit4" element={<PrivateRoute><HabitGame4 /> </PrivateRoute>} />
+              <Route path="/habit5" element={<PrivateRoute><HabitGame5 /> </PrivateRoute>} />
+              <Route path="/habit6" element={<PrivateRoute><HabitGame6 /> </PrivateRoute>} />
+
               </Routes>
 
               {/* Google Translate widget */}
               <GoogleTranslate />
+              
+              {/*AI Chat Button */}
+              <FloatingChat/>
 
               {/* Read aloud accessibility feature */}
               <CollapsibleReadAloudButton />
