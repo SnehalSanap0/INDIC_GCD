@@ -19,6 +19,17 @@ import { ToastProviderComponent } from './components/ui/use-toast'
 import GoogleTranslate from './components/GoogleTranslate'
 import CollapsibleReadAloudButton from './components/ReadAloudButton'
 
+// Games Components
+import DrawingCanvas from './components/Games/Canvas'
+import FlippedCard from './components/Games/FlippedCard'
+import GamesDashboard from './components/Games/GamesDashboard'
+import FillInTheBlanks from './components/Games/FillInTheBlanks'
+import Frog from './components/Games/Frog'
+import Game from './components/Games/Match'
+import GuessTheEmoji from './components/Games/Noun'
+import RangoliGame from './components/Games/Rangoli'
+import Sentence from './components/Games/Sentence'
+
 // Styles
 import './App.css'
 
@@ -33,7 +44,7 @@ function App() {
           {/* SpeechProvider manages speech synthesis or avatar functionality */}
           <SpeechProvider>
             <div className="App">
-              
+
               {/* Top navigation bar, visible on all routes */}
               <NavigationBar />
 
@@ -45,14 +56,26 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
 
                 {/* Private routes - only accessible when logged in */}
-                <Route 
-                  path="/home" 
-                  element={<PrivateRoute><HomePage /></PrivateRoute>} 
+                <Route
+                  path="/home"
+                  element={<PrivateRoute><HomePage /></PrivateRoute>}
                 />
-                <Route 
-                  path="/lesson/:levelId" 
-                  element={<PrivateRoute><LessonPage /></PrivateRoute>} 
+                <Route
+                  path="/lesson/:levelId"
+                  element={<PrivateRoute><LessonPage /></PrivateRoute>}
                 />
+
+                {/* Games routes */}
+                <Route path="/games" element={<PrivateRoute><GamesDashboard /> </PrivateRoute>} />
+                <Route path="/flippedcard" element={<PrivateRoute> <FlippedCard /></PrivateRoute>} />
+                <Route path="/fillintheblanks" element={<PrivateRoute><FillInTheBlanks /> </PrivateRoute>} />
+                <Route path="/frog" element={<PrivateRoute><Frog /> </PrivateRoute>} />
+                <Route path="/match" element={<PrivateRoute> <Game /></PrivateRoute>} />
+                <Route path="/canvas" element={<PrivateRoute><DrawingCanvas /></PrivateRoute>} />
+                <Route path="/sentence" element={<PrivateRoute><Sentence /> </PrivateRoute>} />
+                <Route path="/noun" element={<PrivateRoute><GuessTheEmoji /> </PrivateRoute>} />
+                <Route path="/rangoli" element={<PrivateRoute><RangoliGame /> </PrivateRoute>} />
+
               </Routes>
 
               {/* Google Translate widget */}
