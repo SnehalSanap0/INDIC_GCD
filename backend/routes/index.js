@@ -1,21 +1,18 @@
-
-// const express = require('express');
-// const router = express.Router();
-
-// const authRoutes = require('./authRoutes');
-// // const otherRoutes = require('./otherRoutes'); // For future expansion
-
-// router.use('/auth', authRoutes);
-// // router.use('/other', otherRoutes); // For future expansion
-
-// module.exports = router;
 const express = require('express');
 const router = express.Router();
 
+// Import modular route files
 const authRoutes = require('./authRoutes');
-const progressRoutes = require('./progress');  // ✅ Import the progress routes
+const progressRoutes = require('./progress'); // Handles progress tracking routes
 
+// Route prefix: /api/auth => all authentication-related routes
 router.use('/auth', authRoutes);
-router.use('/progress', progressRoutes); // ✅ Add progress tracking under `/api/progress`
+
+// Route prefix: /api/progress => all lesson progress routes
+router.use('/progress', progressRoutes);
+
+// Future expansion example:
+// const otherRoutes = require('./otherRoutes');
+// router.use('/other', otherRoutes);
 
 module.exports = router;

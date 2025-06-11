@@ -1,9 +1,16 @@
+// Core React & Utility Imports
 import { Suspense, useEffect, useState, createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
+
+// 3D Rendering Tools
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html, Environment, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+
+// =========================
+// Context Setup
+// =========================
 
 export const SpeechContext = createContext({
   isTeaching: false,
@@ -16,6 +23,10 @@ export const SpeechContext = createContext({
 
 export const useSpeechState = () => useContext(SpeechContext);
 
+// =========================
+// Loading Spinner Component
+// =========================
+
 function LoadingSpinner() {
   return (
     <Html center>
@@ -24,12 +35,17 @@ function LoadingSpinner() {
   );
 }
 
+// =========================
+// Avatar 3D Model Component
+// =========================
+
 function AvatarModel({ scale = 1, setFeedback }) {
   const { scene } = useGLTF('/models/megan.glb');
   const [mixer] = useState(() => new THREE.AnimationMixer(scene));
   const [animations, setAnimations] = useState({ idle: null, talking: null, clapping: null, bow: null });
   const { isTeaching, isClapping, isBowing } = useSpeechState();
 
+  // Modify materials for visual enhancement
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
@@ -37,22 +53,20 @@ function AvatarModel({ scale = 1, setFeedback }) {
         child.material.metalness = 0.1;
         child.material.envMapIntensity = 0.5;
 
-        if (child.name.toLowerCase().includes('skin') || 
-            child.name.toLowerCase().includes('face') || 
-            child.name.toLowerCase().includes('body')) {
+        if (['skin', 'face', 'body'].some(part => child.name.toLowerCase().includes(part))) {
           child.material.transmission = 0.1;
           child.material.thickness = 0.5;
           child.material.clearcoat = 0.1;
         }
 
         if (child.material.color) {
-          const color = child.material.color;
-          color.offsetHSL(0.02, 0.1, 0.05);
+          child.material.color.offsetHSL(0.02, 0.1, 0.05);
         }
       }
     });
   }, [scene]);
 
+  // Load FBX animations
   useEffect(() => {
     const loader = new FBXLoader();
     const animationFiles = {
@@ -66,16 +80,15 @@ function AvatarModel({ scale = 1, setFeedback }) {
       loader.load(
         path,
         (fbx) => {
-          if (fbx.animations && fbx.animations.length > 0) {
-            const animation = fbx.animations[0];
-            const action = mixer.clipAction(animation, scene);
-            action.setLoop(THREE.LoopRepeat);
-            action.clampWhenFinished = true;
-            setAnimations((prev) => ({
-              ...prev,
-              [name]: action,
-            }));
-          }
+          const animation = fbx.animations[0];
+          const action = mixer.clipAction(animation, scene);
+          action.setLoop(THREE.LoopRepeat);
+          action.clampWhenFinished = true;
+
+          setAnimations((prev) => ({
+            ...prev,
+            [name]: action,
+          }));
         },
         (progress) => {
           console.log(`Loading ${name}: ${(progress.loaded / progress.total * 100).toFixed(2)}%`);
@@ -86,61 +99,60 @@ function AvatarModel({ scale = 1, setFeedback }) {
       );
     });
 
-    return () => {
-      mixer.stopAllAction();
-    };
+    return () => mixer.stopAllAction();
   }, [mixer, scene]);
 
-  
-
+  // Animation control based on state
   useEffect(() => {
     if (!animations.idle || !animations.talking || !animations.clapping || !animations.bow) return;
 
     const stopAllAnimations = () => {
       Object.values(animations).forEach((action) => {
-        if (action && action.isRunning()) {
+        if (action?.isRunning()) {
           action.fadeOut(0.2);
         }
       });
     };
 
-    if (isBowing && animations.bow) {
+    if (isBowing) {
       stopAllAnimations();
       setFeedback('Great Job!');
       animations.bow.reset().fadeIn(0.2).play();
       animations.bow.setLoop(THREE.LoopOnce);
+
       setTimeout(() => {
-        if (animations.bow && animations.idle) {
-          animations.bow.fadeOut(0.2);
-          animations.idle.reset().fadeIn(0.2).play();
-        }
+        animations.bow.fadeOut(0.2);
+        animations.idle.reset().fadeIn(0.2).play();
       }, 2000);
-    } else if (isClapping && animations.clapping) {
+    } else if (isClapping) {
       stopAllAnimations();
       setFeedback('Great Job!');
       animations.clapping.reset().fadeIn(0.2).play();
-    } else if (isTeaching && animations.talking) {
+    } else if (isTeaching) {
       stopAllAnimations();
       setFeedback('Teaching Mode');
       animations.talking.reset().fadeIn(0.2).play();
-    } else if (animations.idle) {
+    } else {
       stopAllAnimations();
       setFeedback(null);
       animations.idle.reset().fadeIn(0.2).play();
     }
   }, [isTeaching, isClapping, isBowing, animations, setFeedback]);
 
-  useFrame((state, delta) => {
-    mixer.update(delta);
-  });
+  // Advance animation frame
+  useFrame((_, delta) => mixer.update(delta));
 
-return <primitive object={scene} scale={2.5} position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]} />;
+  return <primitive object={scene} scale={2.5} position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]} />;
 }
 
 AvatarModel.propTypes = {
   scale: PropTypes.number,
-  setFeedback: PropTypes.func.isRequired
+  setFeedback: PropTypes.func.isRequired,
 };
+
+// =========================
+// Scene Component
+// =========================
 
 function Scene({ cameraPosition, targetPosition, fov, enableZoom, minZoom, maxZoom, initialScale, setFeedback }) {
   return (
@@ -175,8 +187,12 @@ Scene.propTypes = {
   minZoom: PropTypes.number.isRequired,
   maxZoom: PropTypes.number.isRequired,
   initialScale: PropTypes.number.isRequired,
-  setFeedback: PropTypes.func.isRequired
+  setFeedback: PropTypes.func.isRequired,
 };
+
+// =========================
+// Provider Wrapper
+// =========================
 
 export function SpeechProvider({ children }) {
   const [isTeaching, setIsTeaching] = useState(false);
@@ -196,8 +212,12 @@ export function SpeechProvider({ children }) {
 }
 
 SpeechProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
+
+// =========================
+// Main Avatar Component
+// =========================
 
 function Avatar({
   cameraPosition = [0, -1, 8],
@@ -252,7 +272,7 @@ Avatar.propTypes = {
   enableZoom: PropTypes.bool,
   minZoom: PropTypes.number,
   maxZoom: PropTypes.number,
-  initialScale: PropTypes.number
+  initialScale: PropTypes.number,
 };
 
 export default Avatar;

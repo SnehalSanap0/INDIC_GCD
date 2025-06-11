@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Testimonial data for the carousel
 const testimonials = [
   {
     name: "Shweta Jadhav",
@@ -30,63 +31,69 @@ const testimonials = [
   }
 ];
 
+// Team members data for the "Meet Our Team" section
 const teamMembers = [
   {
     name: "Vedant Purkar",
     role: "Founder & CEO",
-    image: "/images/team/IMG_8468.jpeg",
+    image: "/images/team/IMG_8468.jpeg", // Path to team member's image
     description: "Leading innovation in digital education"
   },
   {
     name: "Sanchita Rajurkar",
     role: "Head of Technology",
-    image: "/images/team/IMG_8466.jpeg",
+    image: "/images/team/IMG_8466.jpeg", // Path to team member's image
     description: "Expert in educational technology"
   },
   {
     name: "Snehal Sanap",
     role: "Content Director",
-    image: "/images/team/IMG_8471.jpeg",
+    image: "/images/team/IMG_8471.jpeg", // Path to team member's image
     description: "Crafting engaging learning experiences"
   },
   {
     name: "Piyush Sanap",
     role: "Creative Lead",
-    image: "/images/team/IMG_8477.jpeg",
+    image: "/images/team/IMG_8477.jpeg", // Path to team member's image
     description: "Designing interactive learning solutions"
   }
 ];
 
 const Landing = () => {
+  // Autoplay plugin for the carousel, set to advance every 4 seconds and stop on user interaction
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
 
   return (
     <div className="bg-white">
+      {/* Main container with relative positioning for background elements */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
-        {/* Background gradients */}
+        {/* Background gradients for visual effect */}
         <div 
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" 
           aria-hidden="true"
         >
+          {/* First gradient blob */}
           <div 
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" 
             style={{
               clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
             }}
           />
+          {/* Second gradient blob */}
           <div 
-  className="relative left-[calc(50%+11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[-30deg] bg-gradient-to-bl from-[#9089fc] to-[#ff80b5] opacity-30 sm:left-[calc(50%+30rem)] sm:w-[72.1875rem]" 
-  style={{
-    clipPath: "polygon(74.1% 44.1%, 76.1% 97.7%, 27.6% 76.8%, 17.9% 100%, 0.1% 64.9%, 27.5% 76.7%, 45.2% 34.5%, 47.5% 58.3%, 52.4% 68.1%, 60.2% 62.4%, 72.5% 32.5%, 80.7% 2%, 85.5% 0.1%, 97.5% 26.9%, 100% 61.6%, 74.1% 44.1%)"
-  }}
-/>
+            className="relative left-[calc(50%+11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[-30deg] bg-gradient-to-bl from-[#9089fc] to-[#ff80b5] opacity-30 sm:left-[calc(50%+30rem)] sm:w-[72.1875rem]" 
+            style={{
+              clipPath: "polygon(74.1% 44.1%, 76.1% 97.7%, 27.6% 76.8%, 17.9% 100%, 0.1% 64.9%, 27.5% 76.7%, 45.2% 34.5%, 47.5% 58.3%, 52.4% 68.1%, 60.2% 62.4%, 72.5% 32.5%, 80.7% 2%, 85.5% 0.1%, 97.5% 26.9%, 100% 61.6%, 74.1% 44.1%)"
+            }}
+          />
         </div>
         
 
-        {/* Hero Section */}
+        {/* Hero Section: Main heading and call to action */}
         <div className="mx-auto max-w-2xl py-12 sm:py-16 lg:py-20">
+          {/* "Explore" link */}
           <div className="hidden sm:mb-6 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Explore the World of INDIC{" "}
@@ -96,6 +103,7 @@ const Landing = () => {
               </Link>
             </div>
           </div>
+          {/* Main hero content */}
           <div className="text-center">
             <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
               Immersive Digital Experiences
@@ -103,6 +111,7 @@ const Landing = () => {
             <p className="mt-6 text-lg font-medium text-gray-500 sm:text-xl">
               Dive into a world of interactive games, captivating stories, innovative learning, and augmented reality adventures.
             </p>
+            {/* Call to action buttons */}
             <div className="mt-8 flex items-center justify-center gap-x-6">
               <Link 
                 to="/home" 
@@ -123,14 +132,14 @@ const Landing = () => {
           <Carousel
             opts={{
               align: "start",
-              loop: true,
+              loop: true, // Enable continuous looping of testimonials
             }}
-            plugins={[plugin.current]}
+            plugins={[plugin.current]} // Apply the autoplay plugin
             className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/3">
+                <CarouselItem key={index} className="md:basis-1/3"> {/* Display 3 testimonials per view on medium screens */}
                   <Card className="bg-white shadow-lg">
                     <CardContent className="flex flex-col items-center justify-center min-h-[200px] p-6">
                       <p className="text-gray-600 text-center mb-4 text-lg italic">
@@ -144,25 +153,25 @@ const Landing = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious /> {/* Navigation button for previous testimonial */}
+            <CarouselNext />     {/* Navigation button for next testimonial */}
           </Carousel>
         </div>
 
         {/* Team Section */}
         <div className="mx-auto max-w-6xl px-4 mt-16">
           <h3 className="text-3xl font-semibold text-center mb-8">Meet Our Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6"> {/* Responsive grid for team members */}
             {teamMembers.map((member, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105"
+                className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105" // Hover effect for team cards
               >
-                <div className="relative pb-[100%]">
+                <div className="relative pb-[100%]"> {/* Aspect ratio box for images */}
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover" // Cover the box with the image
                   />
                 </div>
                 <div className="p-4">
@@ -178,11 +187,13 @@ const Landing = () => {
         {/* Footer Section */}
         <div className="relative mt-16">
           <div className="absolute inset-0 overflow-hidden">
+            {/* Background gradient for the footer */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-100 to-indigo-50 opacity-95" />
           </div>
           
           <div className="relative max-w-5xl mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6"> {/* Three-column layout for footer content */}
+              {/* Quick Feedback Form */}
               <div className="md:col-span-1">
                 <h4 className="text-lg font-semibold mb-3 text-indigo-900">Quick Feedback</h4>
                 <form className="space-y-3">
@@ -203,6 +214,7 @@ const Landing = () => {
                 </form>
               </div>
 
+              {/* Links Section */}
               <div className="md:col-span-1">
                 <h4 className="text-lg font-semibold mb-3 text-indigo-900">Links</h4>
                 <ul className="space-y-1.5 text-sm text-indigo-800">
@@ -213,6 +225,7 @@ const Landing = () => {
                 </ul>
               </div>
 
+              {/* Contact Information */}
               <div className="md:col-span-1">
                 <h4 className="text-lg font-semibold mb-3 text-indigo-900">Contact</h4>
                 <div className="space-y-1.5 text-sm text-indigo-800">
@@ -223,6 +236,7 @@ const Landing = () => {
               </div>
             </div>
 
+            {/* Copyright information */}
             <div className="border-t border-indigo-200 mt-6 pt-6 text-center text-xs text-indigo-700">
               <p>&copy; 2025 INDIC. All rights reserved.</p>
             </div>

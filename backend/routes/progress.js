@@ -1,8 +1,11 @@
 const express = require("express");
-const Progress = require("../models/Progress"); // Import the Progress model
 const router = express.Router();
+const Progress = require("../models/Progress"); // Mongoose model for tracking progress
 
-// ✅ GET progress for a user and level
+// -----------------------------
+// GET /api/progress/:userId/:levelFile
+// Fetch the progress of a user for a given level file
+// -----------------------------
 router.get("/:userId/:levelFile", async (req, res) => {
   try {
     const { userId, levelFile } = req.params;
@@ -15,7 +18,7 @@ router.get("/:userId/:levelFile", async (req, res) => {
       res.json({ lastLesson: progress.lastLesson });
     } else {
       console.log("No progress found, returning default 0.");
-      res.json({ lastLesson: 0 }); // Default progress if not found
+      res.json({ lastLesson: 0 }); // Return 0 if no record exists
     }
   } catch (error) {
     console.error("Error fetching progress:", error);
@@ -23,21 +26,26 @@ router.get("/:userId/:levelFile", async (req, res) => {
   }
 });
 
-// ✅ POST or UPDATE progress
+// -----------------------------
+// POST /api/progress
+// Create or update progress for a user and level
+// -----------------------------
 router.post("/", async (req, res) => {
   try {
     const { userId, levelFile, lastLesson } = req.body;
 
     console.log("Received Progress Update Request:", req.body);
 
+    // Validate required fields
     if (!userId || !levelFile) {
       return res.status(400).json({ error: "Missing userId or levelFile" });
     }
 
+    // Update existing or insert new progress record
     const progress = await Progress.findOneAndUpdate(
       { userId, levelFile },
       { lastLesson },
-      { new: true, upsert: true } // Create if doesn't exist
+      { new: true, upsert: true } // `upsert` ensures record is created if it doesn't exist
     );
 
     console.log("Saved Progress:", progress);
