@@ -20,8 +20,7 @@
 
 bash
 # 1. Clone the repository
-git clone https://github.com/SnehalSanap0/INDIC_CTC.git
-cd INDIC_CTC
+git clone https://github.com/SnehalSanap0/INDIC_Indian_Language_Learning_Platform.git
 
 # 2. Install frontend dependencies
 npm install
